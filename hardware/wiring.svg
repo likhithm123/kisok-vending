@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 700" font-family="Arial, sans-serif" font-size="13" style="background:#fff">
+  <defs><marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#333"/></marker></defs>
+  <style>.b{fill:#f3f6f8;stroke:#333;stroke-width:1.4;rx:8}.p{fill:#fdecea}.d{fill:#e7f5f2}.m{fill:#fff7df}.w{stroke:#333;stroke-width:1.6;fill:none;marker-end:url(#a)}.r{stroke:#c62828}.g{stroke:#1a7f37}.t{font-weight:700;font-size:14px}.s{fill:#555;font-size:11.5px}</style>
+  <text x="20" y="28" font-size="18" font-weight="700">CampusVend — system wiring block diagram</text>
+  <text x="20" y="46" class="s">Red = 230 V AC · black = 24 V / 5 V DC and signals · green = data (USB / HDMI / network)</text>
+
+  <!-- mains -->
+  <rect class="b p" x="20" y="70" width="170" height="70"/><text class="t" x="32" y="94">230 V inlet + switch</text><text class="s" x="32" y="112">MCB 6 A → RCBO 30 mA</text><text class="s" x="32" y="127">→ surge protector</text>
+  <rect class="b p" x="20" y="190" width="170" height="60"/><text class="t" x="32" y="214">24 V 10 A SMPS</text><text class="s" x="32" y="232">fuses: 5 A / 2 A / 2 A</text>
+  <rect class="b p" x="20" y="300" width="170" height="50"/><text class="t" x="32" y="330">Pi 5 power supply</text>
+  <rect class="b p" x="20" y="400" width="170" height="50"/><text class="t" x="32" y="430">Screen 12 V adapter</text>
+  <rect class="b p" x="20" y="500" width="170" height="60"/><text class="t" x="32" y="524">SSR / contactor</text><text class="s" x="32" y="542">→ cooling deck compressor</text>
+  <path class="w r" d="M105,140 V190"/><path class="w r" d="M10,105 H2 V325 H20" marker-end="none"/><path class="w r" d="M2,325 V425 H20"/><path class="w r" d="M2,425 V530 H20"/><path class="w r" d="M2,325 H20"/>
+
+  <!-- pi -->
+  <rect class="b d" x="300" y="290" width="200" height="90"/><text class="t" x="312" y="314">Raspberry Pi 5</text><text class="s" x="312" y="332">Chromium kiosk UI</text><text class="s" x="312" y="347">vmc_agent.py service</text><text class="s" x="312" y="362">LAN (primary) / Wi-Fi</text>
+  <path class="w" d="M190,325 H300"/>
+  <rect class="b d" x="300" y="430" width="200" height="60"/><text class="t" x="312" y="454">15.6" touchscreen</text><text class="s" x="312" y="472">HDMI + USB touch</text>
+  <path class="w g" d="M400,380 V430"/><path class="w" d="M190,425 H250 V460 H300"/>
+  <rect class="b d" x="300" y="150" width="200" height="60"/><text class="t" x="312" y="174">CampusVend server</text><text class="s" x="312" y="192">admin portal · payments · alerts</text>
+  <path class="w g" d="M400,290 V210"/><text class="s" x="408" y="255">HTTPS (outgoing only)</text>
+  <rect class="b d" x="300" y="70" width="200" height="50"/><text class="t" x="312" y="92">Card terminal (bank EDC)</text><text class="s" x="312" y="108">NFC tap · own power + network</text>
+  <path class="w g" d="M400,120 V150"/>
+
+  <!-- mega -->
+  <rect class="b m" x="600" y="280" width="200" height="110"/><text class="t" x="612" y="304">Arduino Mega 2560</text><text class="s" x="612" y="322">D22–27 rows · D30–37 cols</text><text class="s" x="612" y="337">D40 light · D41 lock · D42 cool</text><text class="s" x="612" y="352">D2 drop · D3 door · D4 temp</text><text class="s" x="612" y="367">D5 tilt</text>
+  <path class="w g" d="M500,335 H600"/><text class="s" x="520" y="328">USB serial</text>
+
+  <!-- relays -->
+  <rect class="b" x="900" y="70" width="250" height="60"/><text class="t" x="912" y="94">Relay board 1 — 6 rows</text><text class="s" x="912" y="112">switch +24 V to tray A…F</text>
+  <rect class="b" x="900" y="160" width="250" height="60"/><text class="t" x="912" y="184">Relay board 2 — 8 columns</text><text class="s" x="912" y="202">switch motor return to 24 V −</text>
+  <rect class="b m" x="900" y="250" width="250" height="60"/><text class="t" x="912" y="274">48 spiral motors (6 × 8 matrix)</text><text class="s" x="912" y="292">1N5408 in series + 1N4007 across each</text>
+  <path class="w" d="M800,300 H850 V100 H900"/><path class="w" d="M850,190 H900"/><path class="w" d="M1025,130 V160" marker-end="none"/><path class="w" d="M1025,220 V250"/>
+  <rect class="b" x="900" y="350" width="250" height="60"/><text class="t" x="912" y="374">Relay board 3</text><text class="s" x="912" y="392">CH1 LED lights · CH2 door lock · CH3 cooling</text>
+  <path class="w" d="M800,360 H850 V380 H900"/>
+  <rect class="b" x="900" y="440" width="250" height="110"/><text class="t" x="912" y="464">Sensors</text><text class="s" x="912" y="482">IR drop sensor (via opto) → D2</text><text class="s" x="912" y="497">Door reed switch → D3</text><text class="s" x="912" y="512">DS18B20 temperature → D4</text><text class="s" x="912" y="527">SW-420 tilt / vibration → D5</text>
+  <path class="w" d="M900,495 H830 V385 H800"/>
+  <!-- 24V feeds -->
+  <path class="w" d="M190,220 H240 V620 H1025 V550"/><text class="s" x="250" y="612">+24 V and 24 V − to relay COMs, LED strips, lock, drop sensor; 24→5 V buck feeds relay coils (JD-VCC)</text>
+  <path class="w" d="M190,530 H240" marker-end="none"/>
+  <text class="s" x="20" y="670">Pin-by-pin tables and the motor-matrix detail are in WIRING.md. 230 V wiring must be done by a licensed electrician.</text>
+</svg>

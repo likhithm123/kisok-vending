@@ -1,0 +1,26 @@
+# Server-side unit (install on the campus VM / cloud server that hosts the admin portal).
+#   sudo cp -r server /opt/campusvend-server && sudo useradd -r campusvend && sudo chown -R campusvend /opt/campusvend-server
+#   sudo cp os/campusvend-server.service /etc/systemd/system/ && sudo systemctl enable --now campusvend-server
+# Put secrets in /etc/campusvend.env (chmod 600), e.g.
+#   PAYMENT_PROVIDER=razorpay
+#   RAZORPAY_KEY_ID=...
+#   RAZORPAY_KEY_SECRET=...
+#   RAZORPAY_WEBHOOK_SECRET=...
+#   HTTPS=1
+[Unit]
+Description=CampusVend server (admin portal + kiosk UI + machine API)
+After=network-online.target
+
+[Service]
+User=campusvend
+WorkingDirectory=/opt/campusvend-server
+EnvironmentFile=-/etc/campusvend.env
+Environment=PORT=8080
+ExecStart=/usr/bin/node server.js
+Restart=always
+RestartSec=2
+NoNewPrivileges=yes
+ProtectSystem=full
+
+[Install]
+WantedBy=multi-user.target

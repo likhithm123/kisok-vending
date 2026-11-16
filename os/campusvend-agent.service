@@ -1,0 +1,13 @@
+[Unit]
+Description=CampusVend machine agent (talks to server + motor controller)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=kiosk
+ExecStart=/usr/bin/python3 -u /opt/campusvend/vmc_agent.py /opt/campusvend/config.json
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,11 @@
+{
+  "name": "campusvend-server",
+  "version": "1.0.0",
+  "description": "CampusVend — admin portal, kiosk UI and machine API for campus vending machines",
+  "private": true,
+  "engines": { "node": ">=22.5" },
+  "scripts": {
+    "start": "node server.js",
+    "seed": "node seed.js"
+  }
+}

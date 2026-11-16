@@ -1,0 +1,5 @@
+{
+  "server_url": "http://YOUR-SERVER-ADDRESS:8080",
+  "machine_key": "PASTE-THE-MACHINE-KEY-FROM-ADMIN-PORTAL",
+  "serial_port": "/dev/ttyACM0"
+}

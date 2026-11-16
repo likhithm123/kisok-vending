@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CampusVend Admin</title>
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+<div id="login" hidden>
+  <form class="card login-card" id="loginForm">
+    <h1>CampusVend</h1>
+    <p class="muted">Admin portal</p>
+    <label>Username<input name="username" autocomplete="username" required></label>
+    <label>Password<input name="password" type="password" autocomplete="current-password" required></label>
+    <p class="error" id="loginError"></p>
+    <button class="primary">Log in</button>
+  </form>
+</div>
+<div id="app" hidden>
+  <aside>
+    <div class="brand">CampusVend</div>
+    <nav id="nav"></nav>
+    <div class="who"><span id="who"></span><button id="logout" class="link">Log out</button></div>
+  </aside>
+  <main>
+    <div id="demoBanner" class="banner" hidden>Demo mode — payments are simulated and sales marked “demo” are sample data.</div>
+    <div id="view"></div>
+  </main>
+</div>
+<dialog id="dlg"></dialog>
+<div id="tip" class="tip" hidden></div>
+<div id="toast" class="toast" hidden></div>
+<script src="admin.js"></script>
+</body>
+</html>
